@@ -6,11 +6,12 @@
  }
 
  .calculator {
+  
      height: 73%;
      width: 60%;
      margin-top: 20% auto;
      margin: auto;
-     padding: 3%;
+     padding: 18px;
      background: #99939396;
      border-radius: 30px;
      overflow: hidden;

@@ -130,61 +130,10 @@
      font-weight: bold;
  }
 
- @media (max-width: 480px) {
-     body {
-         padding: 5px;
-         align-items: flex-start;
-         padding-top: 20px;
-     }
-
-     .calculator {
-         padding: 15px;
-         border-radius: 20px;
-         margin: auto;
-     }
-
-     .display {
-         padding: 20px 15px;
-         min-height: 60px;
-         margin-bottom: 15px;
-     }
-
-     .current-operand {
-         font-size: 1.8rem;
-     }
-
-     .buttons {
-         gap: 6px;
-     }
-
-     .btn {
-         padding: 10px 5px;
-         font-size: 18px;
-         border-radius: 25px;
-         height: 50px;
-         min-height: 50px;
-         max-height: 50px;
-     }
-
-     .zero {
-         height: 50px;
-         min-height: 50px;
-         max-height: 50px;
-     }
-
-     #history {
-         max-height: 100px;
-         padding: 10px 15px;
-         font-size: 12px;
-         margin: auto;
-     }
-
-     #history div {
-         padding: 5px 10px;
-         font-size: 12px;
-     }
+ padding: 5px 10px;
+ font-size: 12px;
  }
-
+ }
 
  @media (max-width: 360px) {
      .btn {
@@ -214,11 +163,23 @@
      .buttons {
          gap: 5px;
      }
+
+     #history {
+         max-height: 80px;
+         padding: 8px 10px;
+         font-size: 11px;
+     }
+
+     #history div {
+         padding: 4px 8px;
+         font-size: 11px;
+     }
  }
 
  @media (min-width: 481px) and (max-width: 768px) {
      .calculator {
          max-width: 400px;
+         width: 95%;
      }
 
      .btn {
@@ -236,5 +197,30 @@
 
      .current-operand {
          font-size: 2rem;
+     }
+
+     #history {
+         max-width: 400px;
+         width: 95%;
+         max-height: 120px;
+     }
+ }
+
+ @media (min-width: 769px) {
+     .calculator {
+         max-width: 500px;
+     }
+
+     .btn {
+         height: 65px;
+         min-height: 65px;
+         max-height: 65px;
+         font-size: 24px;
+     }
+
+     .zero {
+         height: 65px;
+         min-height: 65px;
+         max-height: 65px;
      }
  }

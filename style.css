@@ -137,7 +137,7 @@
 
  @media (max-width: 480px) {
      .calculator {
-         padding: 3px;
+         padding: 9px;
          border-radius: 30px;
          margin: auto;
          padding-bottom: 5%;
@@ -188,7 +188,7 @@
 
  @media (max-width: 380px) {
      .calculator {
-         padding: 3px;
+         padding: 9px;
          border-radius: 30px;
          margin: auto;
          padding-bottom: 5%;

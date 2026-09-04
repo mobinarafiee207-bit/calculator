@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="imageds.jpg" type="imge/png">
+</head>
+
+<body>
+    <div class="calculator">
+        <span class="display">
+            <div class="current-operand" id="display">0</div>
+        </span>
+        <div class="buttons">
+            <!-- first row button -->
+            <button class="btn clear" onclick="clearAll()">AC</button>
+            <button class="btn delete" onclick="deleteNumber()">DEL</button>
+            <button class="btn operator" onclick="appendOperator('%')">%</button>
+            <button class="btn operator" onclick="appendOperator('÷')">÷</button>
+
+            <!-- second row button -->
+            <button class="btn number" onclick="appendNumber('1')">1</button>
+            <button class="btn number" onclick="appendNumber('2')">2</button>
+            <button class="btn number" onclick="appendNumber('3')">3</button>
+            <button class="btn operator" onclick="appendOperator('×')">×</button>
+
+            <!-- third row button -->
+            <button class="btn number" onclick="appendNumber('4')">4</button>
+            <button class="btn number" onclick="appendNumber('5')">5</button>
+            <button class="btn number" onclick="appendNumber('6')">6</button>
+            <button class="btn operator" onclick="appendOperator('-')">-</button>
+
+            <!-- fourth row button -->
+            <button class="btn number" onclick="appendNumber('7')">7</button>
+            <button class="btn number" onclick="appendNumber('8')">8</button>
+            <button class="btn number" onclick="appendNumber('9')">9</button>
+            <button class="btn operator" onclick="appendOperator('+')">+</button>
+
+            <!-- fifth row button -->
+            <button class="btn number zero" onclick="appendNumber('0')">0</button>
+            <button class="btn decimal" onclick="appendDecimal()">.</button>
+            <button class="btn equals" onclick="calculate()">=</button>
+        </div>
+    </div>
+    <div id="history">
+        <p>history</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

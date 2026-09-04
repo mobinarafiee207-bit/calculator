@@ -12,6 +12,86 @@ function updateDisplay() {
         displayElement.textContent = currentOperand;
     }
 }
+function square() {
+    if (currentOperand === 'Error') {
+        clearAll();
+        return;
+    }
+    const current = parseFloat(currentOperand);
+    if (!isNaN(current)) {
+        const result = current * current;
+
+        const historyDiv = document.getElementById('history');
+        if (historyDiv) {
+            const newItem = document.createElement('div');
+            newItem.textContent = current + '² = ' + result;
+            historyDiv.appendChild(newItem);
+            historyDiv.scrollTop = historyDiv.scrollHeight;
+        }
+
+        currentOperand = result.toString();
+        shouldResetScreen = true;
+        updateDisplay();
+    }
+}
+
+function squareRoot() {
+    if (currentOperand === 'Error') {
+        clearAll();
+        return;
+    }
+    const current = parseFloat(currentOperand);
+    if (!isNaN(current)) {
+        if (current < 0) {
+            currentOperand = 'Error';
+            updateDisplay();
+            setTimeout(function () {
+                currentOperand = '0';
+                updateDisplay();
+            }, 1500);
+            return;
+        }
+        const result = Math.sqrt(current);
+
+        const historyDiv = document.getElementById('history');
+        if (historyDiv) {
+            const newItem = document.createElement('div');
+            newItem.textContent = '√' + current + ' = ' + result;
+            historyDiv.appendChild(newItem);
+            historyDiv.scrollTop = historyDiv.scrollHeight;
+        }
+
+        currentOperand = result.toString();
+        shouldResetScreen = true;
+        updateDisplay();
+    }
+}
+
+function toggleSign() {
+    if (currentOperand === 'Error') {
+        clearAll();
+        return;
+    }
+    if (currentOperand !== '0') {
+        if (currentOperand.startsWith('-')) {
+            currentOperand = currentOperand.slice(1);
+        } else {
+            currentOperand = '-' + currentOperand;
+        }
+        updateDisplay();
+    }
+}
+
+
+function memoryRecall() {
+    if (currentOperand === 'Error') {
+        clearAll();
+        return;
+    }
+    currentOperand = memory.toString();
+    shouldResetScreen = true;
+    updateDisplay();
+}
 
 function appendNumber(number) {
     if (shouldResetScreen) {
@@ -35,9 +115,16 @@ function appendOperator(op) {
 }
 
 function calculate() {
+    if (operation === undefined || shouldResetScreen) {
+        return;
+    }
+    if (previousOperand === '') {
+        return;
+    }
+
     const prev = parseFloat(previousOperand);
     const current = parseFloat(currentOperand);
-    let result;
+    let result = 0;
 
     if (operation === '+') {
         result = prev + current;
@@ -46,11 +133,28 @@ function calculate() {
     } else if (operation === '×') {
         result = prev * current;
     } else if (operation === '÷') {
+        if (current === 0) {
+            currentOperand = 'Error';
+            operation = undefined;
+            previousOperand = '';
+            updateDisplay();
+            setTimeout(function () {
+                currentOperand = '0';
+                updateDisplay();
+            }, 1500);
+            return;
+        }
         result = prev / current;
+    } else if (operation === '%') {
+        result = (prev * current) / 100;
     }
-
-    const expression = prev + '' + operation + '' + current;
-    addToHistory(expression, result);
+    const historyDiv = document.getElementById('history');
+    if (historyDiv) {
+        const newItem = document.createElement('div');
+        newItem.textContent = prev + ' ' + operation + ' ' + current + ' = ' + result;
+        historyDiv.appendChild(newItem);
+        historyDiv.scrollTop = historyDiv.scrollHeight;
+    }
 
     currentOperand = result.toString();
     operation = undefined;

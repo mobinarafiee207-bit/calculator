@@ -130,7 +130,6 @@
      font-weight: bold;
  }
 
- /* صفحه‌های کوچک (گوشی) */
  @media (max-width: 480px) {
      body {
          padding: 5px;
@@ -186,7 +185,7 @@
      }
  }
 
- /* صفحه‌های خیلی کوچک */
+
  @media (max-width: 360px) {
      .btn {
          padding: 8px 5px;
@@ -217,7 +216,6 @@
      }
  }
 
- /* صفحه‌های متوسط (تبلت) */
  @media (min-width: 481px) and (max-width: 768px) {
      .calculator {
          max-width: 400px;
